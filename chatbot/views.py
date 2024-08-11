@@ -28,7 +28,7 @@ def chat(request):
         chat_entry = Chat(user=request.user, question=question, answer=answer)
         chat_entry.save()
         return render(request, 'chatbot/chat.html', {'question': question, 'answer': answer})
-    return render(request, 'chatbot/chat.html')
+    return render(request, 'chatbot/index.html')
 
 
 def chat_history(request):
