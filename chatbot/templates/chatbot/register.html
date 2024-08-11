@@ -1,0 +1,21 @@
+{% extends 'chatbot/base.html' %}
+
+{% block title %}Register{% endblock %}
+
+
+{% block content %}
+<div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md"> 
+    <h2 class="text-2xl font-semibold mb-4">Register</h2> 
+    <form method="post"> 
+        {% csrf_token %} 
+        {% for field in form %} 
+        <div class="mb-4"> 
+            <label for="{{ field.id_for_label }}" class="block font-medium mb-2">{{ field.label }}</label> 
+            <input type="text-2xl">{{ field }}</input>
+        </div> 
+        {% endfor %} 
+        <button type="submit" class="w-full bg-green-800 text-white py-2 rounded hover:bg-green-700">Register</button> 
+    </form> 
+    <p class="mt-4">Already have an account? <a href="{% url 'login' %}" class="text-green-800 hover:underline">Login here</a>.</p> 
+</div> 
+{% endblock %} 

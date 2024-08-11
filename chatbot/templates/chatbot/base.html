@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}GZU Programme Recommender Chatbot {% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-600">
+
+    <!-- Navigation -->
+    <nav class="bg-green-800 p-4">
+        <div class="container mx-auto flex justify-between">
+            <div>
+                <a href="{% url 'chat' %}" class="text-white font-bold text-lg">GZU Regs Chatbot</a>
+            </div>
+            <div class="space-x-4">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'chat_history' %}" class="text-gray-300 hover:text-white">Chat History</a>
+                    <a href="{% url 'logout' %}" class="text-gray-300 hover:text-white">Logout</a>
+                {% else %}
+                    <a href="{% url 'register' %}" class="text-gray-300 hover:text-white">Register</a>
+                    <a href="{% url 'login' %}" class="text-gray-300 hover:text-white">Login</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="bg-gray-200 p-6">
+        <div class="container mx-auto">
+            <h1 class="text-3xl font-semibold">Welcome to the GZU Program Regulations Chatbot</h1>
+            <p class="mt-2">Ask any questions regarding GZU program regulations and get instant answers!</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto my-6">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-green-900 p-4 mt-6">
+        <div class="container mx-auto text-center text-gray-200">
+            <p>&copy; MCS 2024 Chatbot App. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
